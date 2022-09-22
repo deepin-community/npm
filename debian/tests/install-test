@@ -1,0 +1,9 @@
+set -ex
+export HOME=${AUTOPKGTEST_TMP:-${TMPDIR:-/tmp}}
+/usr/bin/npm outdated || true
+cd "$AUTOPKGTEST_TMP"
+/usr/bin/npm list
+/usr/bin/npm init --yes
+/usr/bin/npm install --save-prod --production -q pretty-ms
+/usr/bin/npm view babel-core
+/usr/bin/npm search pretty-ms

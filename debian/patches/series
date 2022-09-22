@@ -1,0 +1,7 @@
+2004_remove_shebang.patch
+2011_node-gyp-path.patch
+2012_dont_install_man_deps.patch
+2020_reproducible_documentation_build.patch
+#fix-tests.patch
+dont-check-for-last-version.patch
+fix-test.patch

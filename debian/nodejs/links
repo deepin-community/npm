@@ -1,0 +1,4 @@
+npm/bin/npm-cli.js /usr/bin/npm
+npm/bin/npx-cli.js /usr/bin/npx
+npm/node_modules @npmcli/node_modules
+@npmcli/arborist/bin/index.js /usr/bin/npm-arborist

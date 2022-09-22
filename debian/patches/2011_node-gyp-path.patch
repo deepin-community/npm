@@ -1,0 +1,17 @@
+Author: Diane Trout <diane@ghic.org>
+Forwarded: not-needed
+Description: Use the Debian packaged version of node-gyp instead
+ of the convenience copy that was removed on repack.
+Reviewed-By: Xavier Guimard <yadd@debian.org>
+Last-Update: 2020-10-08
+
+--- a/bin/node-gyp-bin/node-gyp
++++ b/bin/node-gyp-bin/node-gyp
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env sh
+ if [ "x$npm_config_node_gyp" = "x" ]; then
+-  node "`dirname "$0"`/../../node_modules/node-gyp/bin/node-gyp.js" "$@"
++  /usr/bin/node-gyp "$@"
+ else
+   "$npm_config_node_gyp" "$@"
+ fi

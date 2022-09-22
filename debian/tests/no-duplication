@@ -1,0 +1,8 @@
+#!/bin/sh
+if pkgjs-ls|grep DUPLICATE|grep -v '@npmcli'; then
+	echo "code duplication found" >&2
+	exit 77
+else
+	echo "no duplication found"
+	exit 0
+fi

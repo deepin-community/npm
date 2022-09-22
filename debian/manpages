@@ -1,0 +1,3 @@
+man/man1/*.1
+man/man5/n*.5
+man/man5/p*.5

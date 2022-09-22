@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+
+export HOME=/tmp
+
+%:
+	dh $@ --with bash-completion
+
+override_dh_auto_build:
+ifeq (,$(filter nodoc,$(DEB_BUILD_PROFILES)))
+	prefix=/usr make mandocs
+	help2man --no-discard-stderr \
+			--name "the npm tree doctor" \
+			--no-info \
+			node_modules/@npmcli/arborist/bin/index.js \
+		| sed -e 's/[Aa]rborist/npm-arborist/' \
+		>man/man1/npm-arborist.1
+endif
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod a-x debian/npm/usr/share/nodejs/npm/lib/utils/completion.sh
+	chmod a+x debian/npm/usr/share/nodejs/npm/bin/npm-cli.js
+	chmod a+x debian/npm/usr/share/nodejs/npm/bin/npx-cli.js
+	chmod a+x debian/npm/usr/share/nodejs/@npmcli/arborist/bin/index.js
+
+override_dh_auto_test:
+	# Test are lauched only during autopkgtest
+
+override_dh_auto_install:
+	dh_auto_install --buildsystem=nodejs
+	rm -vf debian/npm/usr/share/nodejs/npm/bin/node-gyp-bin/node-gyp.cmd \
+		debian/npm/usr/share/nodejs/npm/bin/*.cmd \
+		debian/npm/usr/share/nodejs/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin/node-gyp.cmd
+
+override_dh_link:
+	rm -rf debian/npm/usr/share/nodejs/npm/man
+	dh_link
