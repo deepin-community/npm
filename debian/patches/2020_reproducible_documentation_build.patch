@@ -2,17 +2,18 @@ Description: Use source-date-epoch as timestamp source for documentation
 Author: James Addison <jay+salsa@jp-hosting.net>
 Origin: https://salsa.debian.org/js-team/npm/-/merge_requests/7
 Forwarded: no
-Last-Update: 2021-09-22
+Reviewed-By: Yadd <yadd@debian.org>
+Last-Update: 2022-04-24
 
---- a/scripts/docs-build.js
-+++ b/scripts/docs-build.js
-@@ -34,7 +34,8 @@
+--- a/docs/bin/docs-build.js
++++ b/docs/bin/docs-build.js
+@@ -30,7 +30,8 @@
      .replace(/\[([^\]]+)\]\(\/using-npm\/([^)]+)\)/g, replacer)
      .trim()
  
--  fs.writeFile(dest, marked(result), 'utf8', function (err) {
-+  var date = new Date(process.env.SOURCE_DATE_EPOCH)
-+  fs.writeFile(dest, marked(result, {date}), 'utf8', function (err) {
-     if (err)
-       return console.log(err)
-   })
+-  await fs.writeFile(dest, marked(result), 'utf8')
++  const date = new Date(process.env.SOURCE_DATE_EPOCH)
++  await fs.writeFile(dest, marked(result, {date}), 'utf8')
+ }
+ 
+ run(...process.argv.slice(2)).catch((err) => {

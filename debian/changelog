@@ -1,3 +1,413 @@
+npm (9.2.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Enable more tests
+  * New upstream version 9.2.0~ds1
+  * Dependencies: drop node-ansistyles, node-asap and node-dezalgo
+
+ -- Yadd <yadd@debian.org>  Sun, 11 Dec 2022 15:07:55 +0100
+
+npm (9.1.3~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Exclude ci-info from import
+  * Re-exclude chalk from import
+  * New upstream version 9.1.3~ds1
+  * Add fix for node-chalk 5
+
+ -- Yadd <yadd@debian.org>  Fri, 02 Dec 2022 16:40:14 +0100
+
+npm (9.1.2~ds1-3) unstable; urgency=medium
+
+  * Team upload
+  * Fix audit report
+
+ -- Yadd <yadd@debian.org>  Tue, 29 Nov 2022 06:39:29 +0100
+
+npm (9.1.2~ds1-2) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable
+
+ -- Yadd <yadd@debian.org>  Fri, 18 Nov 2022 11:04:41 +0100
+
+npm (9.1.2~ds1-1) experimental; urgency=medium
+
+  * Team upload
+  * Keep chalk 4 in embedded modules
+  * Enable more tests
+  * New upstream version 9.1.2~ds1
+
+ -- Yadd <yadd@debian.org>  Fri, 18 Nov 2022 08:21:30 +0100
+
+npm (9.1.1~ds1-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream version 9.1.1~ds1
+  * Drop npm-packlist link: no more a binary
+  * Use custom builder for manpages (missing dependency)
+  * Refresh patches
+  * Update excluded-files field
+  * Update docs
+  * Require:
+    + node-cacache >= 17
+    + node-hosted-git-info >= 6
+    + node-npm-package-arg >= 10
+  * Update test
+
+ -- Yadd <yadd@debian.org>  Wed, 16 Nov 2022 15:47:31 +0100
+
+npm (8.19.2~ds1-2) unstable; urgency=medium
+
+  * Team upload
+  * Clean copyright
+  * Update lintian overrides
+  * Don't import .gitignore
+  * Drop __proto__ calls in tests
+
+ -- Yadd <yadd@debian.org>  Wed, 21 Sep 2022 14:40:27 +0200
+
+npm (8.19.2~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Exclude proc-log from import and require node-proc-log
+  * New upstream version 8.19.2~ds1
+  * Unfuzz patches
+
+ -- Yadd <yadd@debian.org>  Sat, 17 Sep 2022 16:44:31 +0200
+
+npm (8.18.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.18.0~ds1
+
+ -- Yadd <yadd@debian.org>  Mon, 22 Aug 2022 09:58:09 +0200
+
+npm (8.17.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.17.0~ds1
+
+ -- Yadd <yadd@debian.org>  Sat, 13 Aug 2022 07:15:19 +0200
+
+npm (8.16.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Add dependency to node-postcss-selector-parser and node-cssesc
+  * New upstream version 8.16.0~ds1
+
+ -- Yadd <yadd@debian.org>  Sun, 07 Aug 2022 21:36:22 +0200
+
+npm (8.15.1~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.15.1~ds1
+
+ -- Yadd <yadd@debian.org>  Fri, 29 Jul 2022 09:28:58 +0200
+
+npm (8.15.0~ds1-2) unstable; urgency=medium
+
+  * Team upload
+  * Add build dependency to node-dezalgo (fixes manpages)
+
+ -- Yadd <yadd@debian.org>  Mon, 25 Jul 2022 17:07:01 +0200
+
+npm (8.15.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.15.0~ds1
+
+ -- Yadd <yadd@debian.org>  Mon, 25 Jul 2022 11:56:30 +0200
+
+npm (8.14.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.14.0~ds1
+  * Add dependency to node-p-map
+
+ -- Yadd <yadd@debian.org>  Sat, 16 Jul 2022 13:56:45 +0200
+
+npm (8.13.2~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Add missing build dependency on dh-nodejs for command dh_nodejs_autodocs
+  * New upstream version 8.13.2~ds1
+
+ -- Yadd <yadd@debian.org>  Thu, 30 Jun 2022 18:47:17 +0200
+
+npm (8.13.1~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.13.1~ds1
+  * Update lintian overrides
+
+ -- Yadd <yadd@debian.org>  Sun, 26 Jun 2022 08:24:38 +0200
+
+npm (8.12.2~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.12.2~ds1
+
+ -- Yadd <yadd@debian.org>  Thu, 16 Jun 2022 06:39:10 +0200
+
+npm (8.12.1~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.12.1~ds1
+
+ -- Yadd <yadd@debian.org>  Sat, 04 Jun 2022 11:35:19 +0200
+
+npm (8.11.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.6.1
+  * New upstream version 8.11.0~ds1
+
+ -- Yadd <yadd@debian.org>  Mon, 30 May 2022 06:03:55 +0200
+
+npm (8.10.0~ds1-2) unstable; urgency=medium
+
+  * Team upload
+  * Better autopkgtest
+
+ -- Yadd <yadd@debian.org>  Thu, 12 May 2022 16:38:45 +0200
+
+npm (8.10.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.10.0~ds1
+  * Update autopkgtest
+
+ -- Yadd <yadd@debian.org>  Thu, 12 May 2022 14:55:29 +0200
+
+npm (8.9.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.9.0~ds1
+
+ -- Yadd <yadd@debian.org>  Sun, 08 May 2022 11:15:36 +0200
+
+npm (8.8.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Exclude .github from import
+  * New upstream version 8.8.0~ds1
+  * Update copyright
+  * Update test
+
+ -- Yadd <yadd@debian.org>  Fri, 29 Apr 2022 16:02:14 +0200
+
+npm (8.7.0~ds1-2) unstable; urgency=medium
+
+  * Team upload
+  * Add missing dependency to node-http-proxy-agent
+
+ -- Yadd <yadd@debian.org>  Mon, 25 Apr 2022 12:33:42 +0200
+
+npm (8.7.0~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.7.0~ds1
+  * Refresh patches
+  * Update test
+
+ -- Yadd <yadd@debian.org>  Sun, 24 Apr 2022 08:29:12 +0200
+
+npm (8.6.0~ds2-2) unstable; urgency=medium
+
+  * Team upload
+  * Enable autopkgtest "require" test, except for npm itself
+  * Add missing dependencies to node-binary-extensions and node-diff, thanks
+    to autopkgtest
+
+ -- Yadd <yadd@debian.org>  Wed, 06 Apr 2022 16:54:17 +0200
+
+npm (8.6.0~ds2-1) unstable; urgency=medium
+
+  * Team upload
+  * Install all workspaces/* modules in nodejs root directories
+  * Exclude dezalgo and npm-normalize-package-bin and add related dependencies
+  * Reduce build dependencies
+  * New upstream version 8.6.0~ds2
+
+ -- Yadd <yadd@debian.org>  Wed, 06 Apr 2022 12:09:50 +0200
+
+npm (8.6.0~ds1-3) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable
+
+ -- Yadd <yadd@debian.org>  Wed, 06 Apr 2022 07:41:21 +0200
+
+npm (8.6.0~ds1-2) experimental; urgency=medium
+
+  * Clean install
+  * Drop npm-version test (needs a real terminal)
+
+ -- Yadd <yadd@debian.org>  Tue, 05 Apr 2022 05:52:50 +0200
+
+npm (8.6.0~ds1-1) experimental; urgency=medium
+
+  * Team upload
+  * Require node-cacache >= 16 and drop @gar/promisify and @npmcli/fs
+  * New upstream version 8.6.0~ds1
+  * Refresh patches
+  * Update autopkgtest
+
+ -- Yadd <yadd@debian.org>  Mon, 04 Apr 2022 18:42:30 +0200
+
+npm (8.5.5~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.5.5~ds1
+  * Refresh patches
+  * Use dh_nodejs_autodocs
+
+ -- Yadd <yadd@debian.org>  Sat, 19 Mar 2022 12:37:26 +0100
+
+npm (8.5.4~ds1-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ deb-scrub-obsolete ]
+  * Remove constraints unnecessary since buster
+
+  [ Yadd ]
+  * Re-enable upstream test using tap >= 15
+  * New upstream version 8.5.4~ds1
+
+ -- Yadd <yadd@debian.org>  Fri, 11 Mar 2022 15:12:11 +0100
+
+npm (8.5.3~ds1-1) unstable; urgency=medium
+
+  * Team upload
+  * Update excluded list and repack
+  * Ignore "docs" component, automatically added by workspace field
+  * Install upstream doc
+
+ -- Yadd <yadd@debian.org>  Mon, 07 Mar 2022 09:40:09 +0100
+
+npm (8.5.3~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.5.3~ds
+
+ -- Yadd <yadd@debian.org>  Mon, 07 Mar 2022 06:22:24 +0100
+
+npm (8.5.2~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.5.2~ds
+  * Refresh patches
+  * Clean copyright
+  * Clean lintian overrides
+
+ -- Yadd <yadd@debian.org>  Wed, 02 Mar 2022 22:29:34 +0100
+
+npm (8.5.1~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * Drop dependency to node-object-assign
+  * New upstream version 8.5.1~ds
+
+ -- Yadd <yadd@debian.org>  Fri, 18 Feb 2022 06:14:06 +0100
+
+npm (8.5.0~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.5.0~ds
+  * Exclude cli-table3 emoji-regex and @npmcli/move-file
+    and require relevant dependencies
+
+ -- Yadd <yadd@debian.org>  Mon, 14 Feb 2022 17:24:15 +0100
+
+npm (8.4.1~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.4.1~ds
+
+ -- Yadd <yadd@debian.org>  Sun, 06 Feb 2022 12:51:47 +0100
+
+npm (8.4.0~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * Replace embedded minipass-* by dependency to na node-minipass
+  * New upstream version 8.4.0~ds
+  * Update lintian overrides
+
+ -- Yadd <yadd@debian.org>  Sat, 29 Jan 2022 18:21:11 +0100
+
+npm (8.4.0~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * Exclude minipass* http-proxy-agent
+  * New upstream version 8.4.0~ds
+
+ -- Yadd <yadd@debian.org>  Sat, 29 Jan 2022 18:09:16 +0100
+
+npm (8.3.2~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.3.2~ds
+  * Update lintian overrides
+
+ -- Yadd <yadd@debian.org>  Thu, 27 Jan 2022 13:06:13 +0100
+
+npm (8.3.1~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * Update copyright
+  * Fix no-duplication test
+  * Set upstream metadata fields: Security-Contact.
+  * New upstream version 8.3.1~ds
+  * Build depends on dh-sequence-nodejs ≥ 0.11.5~ (regression in clean)
+
+ -- Yadd <yadd@debian.org>  Mon, 17 Jan 2022 07:04:33 +0100
+
+npm (8.3.0~ds-2) unstable; urgency=medium
+
+  * Team upload
+  * Install arborist, npm-packlist, pacote and qrcode-terminal in /usr/bin and
+    build manpages
+
+ -- Yadd <yadd@debian.org>  Thu, 23 Dec 2021 12:49:42 +0100
+
+npm (8.3.0~ds-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 8.3.0~ds
+  * Refresh patches
+
+ -- Yadd <yadd@debian.org>  Mon, 13 Dec 2021 10:32:35 +0100
+
+npm (8.1.4+ds-2) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable
+
+ -- Yadd <yadd@debian.org>  Mon, 13 Dec 2021 06:30:02 +0100
+
+npm (8.1.4+ds-1) experimental; urgency=medium
+
+  * Team upload
+  * Fix filenamemangle
+  * Clean Files-Excluded
+  * New upstream version 8.1.4+ds
+  * Update dependencies using result of pkgjs-depends npm@8.1.4
+  * Drop require test, no more usable
+  * Update patches
+
+ -- Yadd <yadd@debian.org>  Sat, 27 Nov 2021 12:34:07 +0100
+
+npm (7.24.2+ds-2) unstable; urgency=medium
+
+  * Team upload
+  * Move node-opener dependency to suggested dependencies. Thanks to
+    Jonas Smedegaard (Closes: #1000673)
+  * Update lintian overrides
+
+ -- Yadd <yadd@debian.org>  Sat, 27 Nov 2021 10:02:08 +0100
+
 npm (7.24.2+ds-1) unstable; urgency=medium
 
   * Team upload

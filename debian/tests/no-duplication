@@ -1,5 +1,7 @@
 #!/bin/sh
-if pkgjs-ls|grep DUPLICATE|grep -v '@npmcli'; then
+
+RE=`grep node_modules/ debian/nodejs/root_modules | perl -ne 'chomp;m#^node_modules/(.*?)(?:/.*)?$# && push @a,$1;END{print "(",join("|",@a).")"}'`
+if pkgjs-ls|grep DUPLICATE|egrep -v "$RE"; then
 	echo "code duplication found" >&2
 	exit 77
 else

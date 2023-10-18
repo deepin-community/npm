@@ -1,0 +1,9 @@
+#!/usr/bin/perl -000 -n
+
+next if(/^--.*title:\s+(.*?)\n.*?section:\s+(.*?)\n.*?description:\s+(.*?)\n.*?--\s*$/s);
+
+s#\[(.*?)\]\(\S*/(.*?)\)#$1#sg;
+
+s/^###/##/mg;
+
+print;

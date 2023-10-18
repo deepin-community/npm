@@ -1,2 +1,6 @@
+workspaces/*
 node_modules/@npmcli/*
+node_modules/npm-packlist
 packages/*
+node_modules/pacote
+node_modules/qrcode-terminal

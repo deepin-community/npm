@@ -1,0 +1,8 @@
+if test "$AUTOPKGTEST_TMP" != ""; then
+	mkdir -p node_modules/@npmcli
+	ln -s ../../docs node_modules/@npmcli/ || true
+	rm -f test/lib/commands/config.js \
+		test/lib/utils/error-message.js \
+		test/lib/utils/update-notifier.js
+fi
+HOME=${AUTOPKGTEST_TMP:-/tmp} tap --bail -J -R spec --no-cov test

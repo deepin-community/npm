@@ -1,8 +1,3 @@
 Tests: install-test, no-duplication
 Depends: @
 Restrictions: allow-stderr, needs-internet, skippable
-
-Test-Command: npm --version
-Depends: @
-Restrictions: superficial
-Features: test-name=npm-version

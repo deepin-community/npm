@@ -2,18 +2,20 @@ const t = require('tap')
 const pack = require('libnpmpack')
 const ssri = require('ssri')
 
-const { logTar, getContents } = require('../../../lib/utils/tar.js')
+const { getContents } = require('../../../lib/utils/tar.js')
 
-const printLogs = (tarball, unicode) => {
+const mockTar = ({ notice }) => t.mock('../../../lib/utils/tar.js', {
+  'proc-log': {
+    notice,
+  },
+})
+
+const printLogs = (tarball, options) => {
   const logs = []
-  logTar(tarball, {
-    log: {
-      notice: (...args) => {
-        args.map(el => logs.push(el))
-      },
-    },
-    unicode,
+  const { logTar } = mockTar({
+    notice: (...args) => args.map(el => logs.push(el)),
   })
+  logTar(tarball, options)
   return logs.join('\n')
 }
 
@@ -25,12 +27,17 @@ t.test('should log tarball contents', async (t) => {
       bundleDependencies: [
         'bundle-dep',
       ],
-    }, null, 2),
+      dependencies: {
+        'bundle-dep': '1.0.0',
+      },
+    }),
     cat: 'meow',
     chai: 'blub',
     dog: 'woof',
     node_modules: {
-      'bundle-dep': 'toto',
+      'bundle-dep': {
+        'package.json': '',
+      },
     },
   })
 
@@ -41,16 +48,46 @@ t.test('should log tarball contents', async (t) => {
     version: '1.0.0',
   }, tarball)
 
-  t.matchSnapshot(printLogs(tarballContents, false))
+  t.matchSnapshot(printLogs(tarballContents))
+})
+
+t.test('should log tarball contents of a scoped package', async (t) => {
+  const testDir = t.testdir({
+    'package.json': JSON.stringify({
+      name: '@myscope/my-cool-pkg',
+      version: '1.0.0',
+      bundleDependencies: [
+        'bundle-dep',
+      ],
+      dependencies: {
+        'bundle-dep': '1.0.0',
+      },
+    }),
+    cat: 'meow',
+    chai: 'blub',
+    dog: 'woof',
+    node_modules: {
+      'bundle-dep': {
+        'package.json': '',
+      },
+    },
+  })
+
+  const tarball = await pack(testDir)
+  const tarballContents = await getContents({
+    _id: '1',
+    name: '@myscope/my-cool-pkg',
+    version: '1.0.0',
+  }, tarball)
+
+  t.matchSnapshot(printLogs(tarballContents))
 })
 
 t.test('should log tarball contents with unicode', async (t) => {
-  const { logTar } = t.mock('../../../lib/utils/tar.js', {
-    npmlog: {
-      notice: (str) => {
-        t.ok(true, 'defaults to npmlog')
-        return str
-      },
+  const { logTar } = mockTar({
+    notice: (str) => {
+      t.ok(true, 'defaults to proc-log')
+      return str
     },
   })
 
@@ -61,26 +98,6 @@ t.test('should log tarball contents with unicode', async (t) => {
     unpackedSize: 0,
     integrity: '',
   }, { unicode: true })
-  t.end()
-})
-
-t.test('should default to npmlog', async (t) => {
-  const { logTar } = t.mock('../../../lib/utils/tar.js', {
-    npmlog: {
-      notice: (str) => {
-        t.ok(true, 'defaults to npmlog')
-        return str
-      },
-    },
-  })
-
-  logTar({
-    files: [],
-    bundled: [],
-    size: 0,
-    unpackedSize: 0,
-    integrity: '',
-  })
   t.end()
 })
 

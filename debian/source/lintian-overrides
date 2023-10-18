@@ -1,12 +1,8 @@
 # False positives
-package-does-not-install-examples node_modules/*
-source-is-missing node_modules/emoji-regex/index.js line 5 is 10207 characters long (>512)
-source-is-missing node_modules/emoji-regex/text.js line 5 is 10208 characters long (>512)
-source-contains-prebuilt-javascript-object node_modules/emoji-regex/es2015/index.js line 5 is 11031 characters long (>512)
-source-contains-prebuilt-javascript-object node_modules/emoji-regex/es2015/text.js line 5 is 11032 characters long (>512)
-source-contains-prebuilt-javascript-object node_modules/emoji-regex/index.js line 5 is 10207 characters long (>512)
-source-contains-prebuilt-javascript-object node_modules/emoji-regex/text.js line 5 is 10208 characters long (>512)
-very-long-line-length-in-source-file node_modules/emoji-regex/es2015/index.js line 6 is 11033 characters long (>512)
-very-long-line-length-in-source-file node_modules/emoji-regex/es2015/text.js line 6 is 11034 characters long (>512)
-very-long-line-length-in-source-file node_modules/emoji-regex/index.js line 6 is 10209 characters long (>512)
-very-long-line-length-in-source-file node_modules/emoji-regex/text.js line 6 is 10210 characters long (>512)
+source-is-missing *workspaces/*/test/fixtures/*
+source-contains-prebuilt-javascript-object *workspaces/*/test/fixtures/*
+very-long-line-length-in-source-file *.md*
+very-long-line-length-in-source-file *changelogs/CHANGELOG-*
+very-long-line-length-in-source-file *workspaces/*/test/fixtures/*
+# Test patch
+very-long-line-length-in-source-file *debian/patches/drop-__proto__-in-tests.patch*
