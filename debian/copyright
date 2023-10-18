@@ -7,9 +7,13 @@ Source: https://github.com/npm/cli
  they are removed; or they are not good candidates for being packaged
  at the moment, in which case they are kept.
 Files-Excluded:
+ .github
+ .gitignore
+ .gitattributes
+ node_modules/@npmcli/*/node_modules
  node_modules/abbrev
  node_modules/agent-base
- node_modules/ajv
+ node_modules/aggregate-error
  node_modules/ansi-regex
  node_modules/ansi-styles
  node_modules/ansistyles
@@ -17,61 +21,52 @@ Files-Excluded:
  node_modules/archy
  node_modules/are-we-there-yet
  node_modules/asap
- node_modules/asn1
- node_modules/assert-plus
- node_modules/asynckit
- node_modules/aws4
- node_modules/aws-sign2
  node_modules/balanced-match
- node_modules/bcrypt-pbkdf
+ node_modules/base64-js
  node_modules/binary-extensions
  node_modules/brace-expansion
  node_modules/builtins
  node_modules/cacache
- node_modules/caseless
  node_modules/chalk
  node_modules/chownr
+ node_modules/ci-info
+ node_modules/clean-stack
+ node_modules/cli-columns/node_modules
+ node_modules/cli-table3
  node_modules/clone
  node_modules/color-convert
  node_modules/color-name
  node_modules/colors
  node_modules/color-support
  node_modules/columnify
- node_modules/combined-stream
  node_modules/concat-map
  node_modules/console-control-strings
- node_modules/core-util-is
- node_modules/dashdash
+ node_modules/cssesc
  node_modules/debug
  node_modules/defaults
- node_modules/delayed-stream
  node_modules/delegates
  node_modules/depd
+ node_modules/dezalgo
  node_modules/diff
- node_modules/ecc-jsbn
+ node_modules/emoji-regex
  node_modules/encoding
  node_modules/err-code
- node_modules/extend
- node_modules/extsprintf
- node_modules/fast-deep-equal
- node_modules/fast-json-stable-stringify
- node_modules/forever-agent
+ node_modules/events
  node_modules/fs.realpath
  node_modules/function-bind
+ node_modules/@gar
  node_modules/gauge
- node_modules/getpass
  node_modules/glob
  node_modules/graceful-fs
- node_modules/har-schema
- node_modules/har-validator
  node_modules/has
  node_modules/has-flag
  node_modules/has-unicode
  node_modules/hosted-git-info
  node_modules/http-cache-semantics
- node_modules/http-signature
+ node_modules/http-proxy-agent
  node_modules/https-proxy-agent
  node_modules/iconv-lite
+ node_modules/ieee754
  node_modules/imurmurhash
  node_modules/indent-string
  node_modules/inflight
@@ -80,20 +75,22 @@ Files-Excluded:
  node_modules/ip
  node_modules/ip-regex
  node_modules/is-core-module
+ node_modules/is-fullwidth-code-point
  node_modules/isexe
- node_modules/isstream
  node_modules/is-typedarray
- node_modules/jsbn
  node_modules/jsonparse
  node_modules/json-parse-even-better-errors
- node_modules/json-schema
- node_modules/json-schema-traverse
- node_modules/json-stringify-safe
- node_modules/jsprim
  node_modules/lru-cache
- node_modules/mime-db
- node_modules/mime-types
+ node_modules/make-fetch-happen/node_modules
  node_modules/minimatch
+ node_modules/minipass-collect
+ node_modules/minipass-fetch
+ node_modules/minipass-flush
+ node_modules/minipass-json-stream
+ node_modules/minipass-pipeline
+ node_modules/minipass-sized
+ node_modules/minipass
+ node_modules/minizlib
  node_modules/mkdirp
  node_modules/ms
  node_modules/mute-stream
@@ -102,27 +99,23 @@ Files-Excluded:
  node_modules/nopt
  node_modules/normalize-package-data
  node_modules/npm-bundled
- node_modules/*npmcli/move-file
+ node_modules/@npmcli/fs
+ node_modules/@npmcli/move-file
  node_modules/npmlog
+ node_modules/npm-normalize-package-bin
  node_modules/npm-package-arg
- node_modules/number-is-nan
- node_modules/oauth-sign
- node_modules/object-assign
  node_modules/once
  node_modules/opener
  node_modules/path-is-absolute
- node_modules/performance-now
  node_modules/p-map
+ node_modules/postcss-selector-parser
+ node_modules/proc-log
  node_modules/promise-inflight
  node_modules/promise-retry
  node_modules/promzard
- node_modules/psl
- node_modules/punycode
- node_modules/qs
  node_modules/read
  node_modules/readable-stream
  node_modules/read-package-json
- node_modules/request
  node_modules/retry
  node_modules/rimraf
  node_modules/safe-buffer
@@ -134,7 +127,6 @@ Files-Excluded:
  node_modules/spdx-exceptions
  node_modules/spdx-expression-parse
  node_modules/spdx-license-ids
- node_modules/sshpk
  node_modules/ssri
  node_modules/string_decoder
  node_modules/string-width
@@ -142,16 +134,13 @@ Files-Excluded:
  node_modules/supports-color
  node_modules/tar
  node_modules/text-table
- node_modules/tunnel-agent
- node_modules/tweetnacl
+ node_modules/@tootallnate/once
  node_modules/typedarray-to-buffer
  node_modules/unique-filename
- node_modules/uri-js
  node_modules/util-deprecate
- node_modules/uuid
  node_modules/validate-npm-package-license
  node_modules/validate-npm-package-name
- node_modules/verror
+ node_modules/wcwidth
  node_modules/which
  node_modules/wide-align
  node_modules/wrappy
@@ -175,10 +164,6 @@ Copyright: 2012-2015, fengmk2 <fengmk2@gmail.com>
  Joyent, Inc. and other Node contributors
 License: Expat
 
-Files: node_modules/ansicolors/*
-Copyright: 2013, Thorsten Lorenz
-License: Expat
-
 Files: node_modules/fastest-levenshtein/*
 Copyright: 2020 Kasper Unn Weihe
 License: Expat
@@ -188,33 +173,16 @@ Files: node_modules/cidr-regex/*
 Copyright: silverwind
 License: Expat
 
-Files: node_modules/cli-columns/*
-Copyright: Shannon Moeller <me@shannonmoeller.com>
-License: Expat
-
-Files: node_modules/cli-table3/*
-Copyright: 2014, James Talmage <james.talmage@jrtechnical.com>
-License: Expat
-
-Files: node_modules/aggregate-error/*
- node_modules/clean-stack/*
- node_modules/cli-table3/node_modules/*
- node_modules/code-point-at/*
- node_modules/env-paths/*
- node_modules/is-fullwidth-code-point/*
-Copyright: Sindre Sorhus <sindresorhus@gmail.com>
+Files: node_modules/@colors/colors/*
+Copyright: Marak Squires
+ Sindre Sorhus <sindresorhus@gmail.com>
+ DABH <https://github.com/DABH>
 License: Expat
 
 Files: node_modules/common-ancestor-path/*
- node_modules/dezalgo/*
  node_modules/fs-minipass/*
  node_modules/ignore-walk/*
  node_modules/json-stringify-nice/*
- node_modules/libnpmversion/*
- node_modules/minipass-collect/*
- node_modules/minipass-flush*
- node_modules/minipass-pipeline/*
- node_modules/minipass-sized/*
  node_modules/mkdirp-infer-owner/*
  node_modules/npm-packlist/*
  node_modules/pacote/*
@@ -229,8 +197,8 @@ Files: node_modules/debuglog/*
 Copyright: Joyent, Inc. and other Node contributors
 License: Expat
 
-Files: node_modules/emoji-regex/*
-Copyright: Mathias Bynens <https://mathiasbynens.be/>
+Files: node_modules/env-paths/*
+Copyright: Sindre Sorhus <sindresorhus@gmail.com>
 License: Expat
 
 Files: node_modules/humanize-ms/*
@@ -246,27 +214,6 @@ Files: node_modules/just-diff-apply/*
 Copyright: 2016 angus croll
 License: Expat
 
-Files: node_modules/minipass-fetch/*
-Copyright: Isaac Z. Schlueter and Contributors
- 2016 David Frank
-License: Expat
-Comment: This is a derivative work based on "node-fetch" by David Frank,
- modified and distributed under the terms of the MIT license above.
- https://github.com/bitinn/node-fetch
-
-Files: node_modules/minipass-json-stream/*
-Copyright: Isaac Z. Schlueter and Contributors
- 2011 Dominic Tarr
-License: Expat
-Comment: This is a derivative work based on JSONStream by Dominic Tarr,
- modified and redistributed according to the terms of the MIT license above.
-
-Files: node_modules/minizlib/*
-Copyright: Isaac Z. Schlueter and Contributors
- Node.js contributors
- Joyent, Inc. and other Node contributors
-License: Expat
-
 Files: node_modules/npm-install-checks/*
 Copyright: Robert Kowalski <rok@kowalski.gd>
  Isaac Z. Schlueter
@@ -279,6 +226,10 @@ License: BSD-2-Clause
 Files: node_modules/qrcode-terminal/*
 Copyright: Unknown
 License: Apache-2.0
+
+Files: node_modules/qrcode-terminal/vendor/QRCode/*
+Copyright: 2009 Kazuhiko Arase
+License: Expat
 
 Files: node_modules/read-cmd-shim/*
 Copyright: 2015 Rebecca Turner
@@ -293,17 +244,17 @@ Files: node_modules/tiny-relative-date/*
 Copyright: 2017, Joseph Wynn
 License: Expat
 
-Files: node_modules/wcwidth/*
-Copyright: 2012 by Jun Woong
-License: Expat
-
 Files: debian/*
 Copyright: 2011-2019, Jérémy Lal <kapouer@melix.org>
  2011-2012, Jonas Smedegaard <dr@jones.dk>
  2018-2020, Pirate Praveen <praveen@debian.org>
  2019, Manas Kashyap <manaskashyaptech@gmail.com>
- 2019-2021, Yadd <yadd@debian.org>
+ 2019-2022, Yadd <yadd@debian.org>
 License: Artistic-2.0
+
+Files: debian/tests/test_modules/spawk/*
+Copyright: Gar <gar+npm@danger.computer>
+License: Expat
 
 License: Apache-2.0
  On Debian systems, the complete text of the Apache version 2.0 license

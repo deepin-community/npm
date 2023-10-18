@@ -5,19 +5,26 @@
 # export DH_VERBOSE=1
 
 export HOME=/tmp
+ARBORIST_VERSION=$(shell pkgjs-pjson node_modules/@npmcli/arborist version)
+NPM_PACKLIST_VERSION=$(shell pkgjs-pjson node_modules/npm-packlist version)
+PACOTE_VERSION=$(shell pkgjs-pjson node_modules/pacote version)
+QRT_VERSION=$(shell pkgjs-pjson node_modules/qrcode-terminal version)
 
 %:
 	dh $@ --with bash-completion
 
 override_dh_auto_build:
 ifeq (,$(filter nodoc,$(DEB_BUILD_PROFILES)))
-	prefix=/usr make mandocs
-	help2man --no-discard-stderr \
-			--name "the npm tree doctor" \
-			--no-info \
+	mkdir -p man/man1 man/man5
+	debian/build-man-commands `find docs/lib/content/c* -name '*.md'` >debian/build-manpages
+	sh -ex debian/build-manpages
+	help2man --no-discard-stderr -n "the npm tree doctor" -N \
+			--version-string $(ARBORIST_VERSION) \
 			node_modules/@npmcli/arborist/bin/index.js \
-		| sed -e 's/[Aa]rborist/npm-arborist/' \
 		>man/man1/npm-arborist.1
+	node_modules/qrcode-terminal/bin/qrcode-terminal.js --help
+	help2man -N -n 'The JavaScript Package Handler' --version-string $(PACOTE_VERSION) \
+		node_modules/pacote/lib/bin.js >man/man1/pacote.1
 endif
 
 override_dh_fixperms:
@@ -26,16 +33,36 @@ override_dh_fixperms:
 	chmod a+x debian/npm/usr/share/nodejs/npm/bin/npm-cli.js
 	chmod a+x debian/npm/usr/share/nodejs/npm/bin/npx-cli.js
 	chmod a+x debian/npm/usr/share/nodejs/@npmcli/arborist/bin/index.js
+	chmod a+x debian/npm/usr/share/nodejs/pacote/lib/bin.js
+	chmod a+x debian/npm/usr/share/nodejs/qrcode-terminal/bin/qrcode-terminal.js
 
 override_dh_auto_test:
 	# Test are lauched only during autopkgtest
 
 override_dh_auto_install:
+	# Since node_modules/* is declared in additional_components, clean unwanted modules
+	pkgjs-utils clean_test_modules
+	pkgjs-utils clean_external_modules
+	pkgjs-utils clean_build_modules
 	dh_auto_install --buildsystem=nodejs
 	rm -vf debian/npm/usr/share/nodejs/npm/bin/node-gyp-bin/node-gyp.cmd \
 		debian/npm/usr/share/nodejs/npm/bin/*.cmd \
 		debian/npm/usr/share/nodejs/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin/node-gyp.cmd
+	LIST=`pkgjs-utils root_modules_list 2>/dev/null` && cd debian/npm/usr/share/nodejs/npm/node_modules && rm -r $$LIST || true
+	for m in workspaces/*; do \
+		NAME=`pkgjs-pjson $$m name`; \
+		(cd debian/npm/usr/share/nodejs/npm/node_modules && rm -rf $$NAME); \
+	done
+
+override_dh_installdocs:
+	dh_installdocs
+	dh_nodejs_autodocs
 
 override_dh_link:
 	rm -rf debian/npm/usr/share/nodejs/npm/man
 	dh_link
+
+override_dh_gencontrol:
+	dh_gencontrol -- -Vpacote:Version="$(PACOTE_VERSION)" \
+			-Vqrt:Version="$(QRT_VERSION)" \
+			-Varborist:Version="$(ARBORIST_VERSION)"

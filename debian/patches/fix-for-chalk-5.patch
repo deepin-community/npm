@@ -1,0 +1,16 @@
+Description: fix for chalk 5
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-12-02
+
+--- a/lib/npm.js
++++ b/lib/npm.js
+@@ -352,7 +352,7 @@
+       if (!this.color) {
+         level = 0
+       }
+-      this.#chalk = new chalk.Instance({ level })
++      this.#chalk = new chalk.Chalk({ level })
+     }
+     return this.#chalk
+   }

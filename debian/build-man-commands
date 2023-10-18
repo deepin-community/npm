@@ -1,0 +1,9 @@
+#!/usr/bin/perl -000 -n
+
+if(/^--.*title:\s+(.*?)\n.*?section:\s+(.*?)\n.*?description:\s+(.*?)\n.*?--\s*$/s){
+    print "debian/transform-manpages $ARGV | marked-man --name '$1' --section '$2' > ";
+    $s=$2;
+    $ARGV=~s#.*/##;
+    $ARGV=~s/\.md$//;
+    print "man/man$s/$ARGV.$s\n"
+}
